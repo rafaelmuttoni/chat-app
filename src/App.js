@@ -6,7 +6,6 @@ import "firebase/firestore"; // database
 import "firebase/auth"; // user auth
 
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 
 import ChatRoom from "./components/ChatRoom";
 import SignIn from "./components/SignIn";
@@ -30,10 +29,15 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header"></header>
-      <section>
-        {user ? <ChatRoom /> : <SignIn firebase={firebase} auth={auth} />}
+      <header className="App-header">
         {auth.currentUser && <SignOut auth={auth} />}
+      </header>
+      <section>
+        {user ? (
+          <ChatRoom firebase={firebase} firestore={firestore} auth={auth} />
+        ) : (
+          <SignIn firebase={firebase} auth={auth} />
+        )}
       </section>
     </div>
   );
