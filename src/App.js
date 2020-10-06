@@ -12,7 +12,7 @@ import SignIn from "./components/SignIn";
 import SignOut from "./components/SignOut";
 
 firebase.initializeApp({
-  apiKey: "AIzaSyBVto-9wL57wiTsCauCyJPhB4eaLKQWKjM",
+  apiKey: process.env.REACT_APP_API_KEY,
   authDomain: "chat-app-f2ad9.firebaseapp.com",
   databaseURL: "https://chat-app-f2ad9.firebaseio.com",
   projectId: "chat-app-f2ad9",
